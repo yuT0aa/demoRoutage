@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import { MovieContext } from '../MovieContext';
+import { MdLocalMovies } from "react-icons/md";
 
 export default function Navbar(){
     const{state,dispatch}=useContext(MovieContext);
@@ -14,6 +16,7 @@ export default function Navbar(){
     return(
         <nav className="navbar">
             <div className="navbar-brand">
+                <MdLocalMovies />
                 <span>MovieBox</span>
             </div>
             <ul className="navbar-links">

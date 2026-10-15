@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { MovieContext } from '../MovieContext';
+import { FcLike } from "react-icons/fc";
+import { FcDislike } from "react-icons/fc";
 
 function MovieCard({movie}){
     const {dispatch}=useContext(MovieContext);
@@ -28,9 +30,8 @@ function MovieCard({movie}){
                 <div className="card-actions">
                     <button
                         className={`btn-like ${movie.liked ? 'liked' : ''}`}
-                        onClick={toggleLike}
-                    >
-                        {movie.liked ? '❤️ Aimé' : '🤍 Liker'}
+                        onClick={toggleLike}>
+                            {movie.liked?<FcDislike/>:<FcLike/>} 
                     </button>
                     <button
                         className={`btn-watchlist ${movie.inWatchlist ? 'in-watchlist' : ''}`}

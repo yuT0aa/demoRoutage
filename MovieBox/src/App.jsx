@@ -1,28 +1,29 @@
 import React, { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import MovieCard from './Components/MovieCard';
 import { MovieContext } from './MovieContext';
 
-function MovieList(){
+function MovieList(filterType){
   const{state}=useContext(MovieContext);
-  const{movies,filter}=state;
+  const{movies}=state;
 
   const filteredMovies=movies.filter(movie=>{
-    if(filter==='WATCHLIST')return movie.inWatchlist;
-    if(filter==='LIKED')return movie.liked;
+    if (filterType==='WATCHLIST')return movie.inWatchlist;
+    if (filterType==='LIKED')return movie.liked;
     return true;
   });
 
   return (
-    <main className="container">
-      {filteredMovies.length === 0 ? (
-        <div className="empty-message">
-          <p>Aucun film trouvé dans cette catégorie.</p>
+    <main className="container my-5">
+      {filteredMovies.length===0?(
+        <div className="alert alert-dark text-center py-5 border-secondary text-muted fs-5" role="alert">
+          nothing!
         </div>
-      ) : (
-        <div className="movies-grid">
-          {filteredMovies.map(movie => (
-            <MovieCard key={movie.id} movie={movie} />
+      ):(
+        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+          {filteredMovies.map(movie =>(
+            <MovieCard key={movie.id}movie={movie}/>
           ))}
         </div>
       )}
@@ -30,13 +31,15 @@ function MovieList(){
   );
 }
 
-function App() {
+export default function App() {
   return (
-    <div className="app">
+    <div className="bg-dark text-light min-vh-100 d-flex flex-column">
       <Navbar />
-      <MovieList />
+      <Routes>
+        <Route path="/" element={<MovieList filterType="ALL" />} />
+        <Route path="/watchlist" element={<MovieList filterType="WATCHLIST" />} />
+        <Route path="/favorites" element={<MovieList filterType="LIKED" />} />
+      </Routes>
     </div>
   );
 }
-
-export default App;

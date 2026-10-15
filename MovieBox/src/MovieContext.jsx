@@ -80,7 +80,7 @@ function movieReducer(state,action){
     }
 }
 
-export const MovieContext=createContext();
+export const MovieContext = createContext();
 
 export function MovieProvider({children}){
     const [state,dispatch]=useReducer(movieReducer,initialState);
