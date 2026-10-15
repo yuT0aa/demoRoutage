@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MovieContext } from '../MovieContext';
 import { MdLocalMovies } from "react-icons/md";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Navbar(){
     const{state,dispatch}=useContext(MovieContext);
@@ -21,7 +22,7 @@ export default function Navbar(){
             </div>
             <ul className="navbar-links">
                 <li className={state.filter==='ALL'?'active':''}>
-                    <button onclick={()=>setFilter('ALL')}>All Movies</button>
+                    <button onClick={()=>setFilter('ALL')}>All Movies</button>
                 </li> 
                 <li className={state.filter === 'WATCHLIST' ? 'active' : ''}>
                     <button onClick={() => setFilter('WATCHLIST')}>

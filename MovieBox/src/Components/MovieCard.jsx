@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { MovieContext } from '../MovieContext';
 import { FcLike } from "react-icons/fc";
 import { FcDislike } from "react-icons/fc";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function MovieCard({movie}){
     const {dispatch}=useContext(MovieContext);
