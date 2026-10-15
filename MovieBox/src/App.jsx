@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import Navbar from './components/Navbar';
-import MovieCard from './components/MovieCard';
+import Navbar from './Components/Navbar';
+import MovieCard from './Components/MovieCard';
 import { MovieContext } from './MovieContext';
 
 function MovieList(){
