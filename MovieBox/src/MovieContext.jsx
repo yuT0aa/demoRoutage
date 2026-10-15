@@ -1,8 +1,8 @@
 import React, { createContext, useReducer } from 'react';
 
 const initialMovies=[
-  {
-    id: 1,
+    {
+        id: 1,
     title: "Inception",
     year: 2010,
     genre: "Sci-Fi",
@@ -18,8 +18,8 @@ const initialMovies=[
     poster: "https://m.media-amazon.com/images/I/91vIHsL-zjL._AC_UF894,1000_QL80_.jpg",
     liked: true,
     inWatchlist: true
-  },
-  {
+},
+{
     id: 3,
     title: "The Dark Knight",
     year: 2008,
@@ -27,8 +27,8 @@ const initialMovies=[
     poster: "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX1000_.jpg",
     liked: false,
     inWatchlist: true
-  },
-  {
+},
+{
     id: 4,
     title: "Pulp Fiction",
     year: 1994,
@@ -38,6 +38,8 @@ const initialMovies=[
     inWatchlist: false
   }
 ];
+
+export const MovieContext = createContext();
 
 const initialState={
     movies:initialMovies
@@ -80,7 +82,6 @@ function movieReducer(state,action){
     }
 }
 
-export const MovieContext = createContext();
 
 export function MovieProvider({children}){
     const [state,dispatch]=useReducer(movieReducer,initialState);
